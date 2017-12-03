@@ -5,7 +5,7 @@ namespace SimpleBus\DoctrineORMBridge\Tests\MessageBus;
 use Exception;
 use SimpleBus\DoctrineORMBridge\MessageBus\WrapsMessageHandlingInTransaction;
 
-class WrapsMessageHandlingInTransactionTest extends \PHPUnit_Framework_TestCase
+class WrapsMessageHandlingInTransactionTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @test
@@ -18,12 +18,12 @@ class WrapsMessageHandlingInTransactionTest extends \PHPUnit_Framework_TestCase
             $this->assertSame($message, $actualMessage);
             $nextIsCalled = true;
         };
-        $managerRegistry = $this->getMock('Doctrine\Common\Persistence\ManagerRegistry');
+        $managerRegistry = $this->createMock('Doctrine\Common\Persistence\ManagerRegistry');
         $entityManagerName = 'default';
         $entityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
             ->disableOriginalConstructor()
             ->setMethods(['transactional'])
-            ->getMock();
+            ->createMock();
         $entityManager
             ->expects($this->at(0))
             ->method('transactional')
@@ -55,12 +55,12 @@ class WrapsMessageHandlingInTransactionTest extends \PHPUnit_Framework_TestCase
     {
         $message = $this->dummyMessage();
         $throwException = new Exception();
-        $managerRegistry = $this->getMock('Doctrine\Common\Persistence\ManagerRegistry');
+        $managerRegistry = $this->createMock('Doctrine\Common\Persistence\ManagerRegistry');
         $entityManagerName = 'default';
         $alwaysFailingEntityManager = $this->getMockBuilder('Doctrine\ORM\EntityManager')
             ->disableOriginalConstructor()
             ->setMethods(['transactional'])
-            ->getMock();
+            ->createMock();
         $alwaysFailingEntityManager
             ->expects($this->at(0))
             ->method('transactional')
@@ -99,6 +99,6 @@ class WrapsMessageHandlingInTransactionTest extends \PHPUnit_Framework_TestCase
 
     private function dummyMessage()
     {
-        return $this->getMock('SimpleBus\Message\Message');
+        return $this->createMock('SimpleBus\Message\Message');
     }
 }
