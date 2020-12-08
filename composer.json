@@ -1,0 +1,52 @@
+{
+    "name": "simple-bus/doctrine-orm-bridge",
+    "type": "library",
+    "description": "Doctrine ORM bridge for using command and event buses",
+    "keywords": [
+        "Doctrine",
+        "event bus",
+        "command bus"
+    ],
+    "homepage": "http://github.com/SimpleBus/DoctrineORMBridge",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cliff Odijk",
+            "email": "cliff@jcid.nl"
+        },
+        {
+            "name": "Ruud Kamphuis",
+            "homepage": "https://github.com/ruudk"
+        },
+        {
+            "name": "Matthias Noback",
+            "email": "matthiasnoback@gmail.com",
+            "homepage": "http://php-and-symfony.matthiasnoback.nl"
+        }
+    ],
+    "require": {
+        "php": "^7.3",
+        "doctrine/orm": "^2.7",
+        "simple-bus/message-bus": "^3.0"
+    },
+    "require-dev": {
+        "matthiasnoback/doctrine-orm-test-service-provider": "^3.0",
+        "phpunit/phpunit": "^8.2.3"
+    },
+    "suggest": {
+        "simple-bus/symfony-bridge": "Bridge for using command buses and event buses with Symfony"
+    },
+    "autoload": {
+        "psr-4": {
+            "SimpleBus\\DoctrineORMBridge\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SimpleBus\\DoctrineORMBridge\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
